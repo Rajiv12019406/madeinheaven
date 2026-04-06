@@ -1,0 +1,91 @@
+.book-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.book-form {
+  max-width: 640px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.book-cta {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.book-aside h2 {
+  margin-top: 0;
+  font-size: 1.35rem;
+}
+
+.steps {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--color-muted);
+}
+
+.steps li {
+  margin-bottom: 0.65rem;
+}
+
+.book-gate {
+  max-width: 420px;
+  text-align: center;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.alert-ok {
+  background: rgba(61, 154, 106, 0.15);
+  border: 1px solid rgba(61, 154, 106, 0.35);
+  color: var(--color-success);
+}
+
+.alert-err {
+  background: rgba(201, 76, 76, 0.12);
+  border: 1px solid rgba(201, 76, 76, 0.35);
+  color: #e8a0a0;
+}
+
+.hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(12, 18, 24, 0.25);
+  border-top-color: #0c1218;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .book-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
