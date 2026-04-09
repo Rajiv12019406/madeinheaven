@@ -1,18 +1,19 @@
 :root {
-  --color-bg: #0c1218;
-  --color-bg-elevated: #141c26;
-  --color-surface: #1a2433;
-  --color-border: #2a3545;
-  --color-text: #e8ecf1;
-  --color-muted: #9aa5b5;
-  --color-accent: #c9a227;
-  --color-accent-dim: #8f7420;
-  --color-success: #3d9a6a;
-  --color-danger: #c94c4c;
+  /* Premium law-firm palette (LexCounsel-inspired) */
+  --color-bg: #f7f8fa;
+  --color-bg-elevated: #ffffff;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-text: #0f172a; /* slate-900 */
+  --color-muted: #475569; /* slate-600 */
+  --color-accent: #b08a1b; /* warm gold */
+  --color-accent-dim: #8a6b14;
+  --color-success: #0f766e;
+  --color-danger: #b42318;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Source Sans 3', system-ui, sans-serif;
   --radius: 10px;
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --shadow: 0 16px 40px rgba(2, 6, 23, 0.08);
 }
 
 *,
@@ -32,8 +33,9 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text);
-  background: radial-gradient(1200px 600px at 10% -10%, #1c2838 0%, transparent 55%),
-    radial-gradient(900px 500px at 100% 0%, #15202c 0%, transparent 50%), var(--color-bg);
+  background: radial-gradient(900px 450px at 0% 0%, rgba(176, 138, 27, 0.10) 0%, transparent 55%),
+    radial-gradient(900px 450px at 100% 0%, rgba(15, 23, 42, 0.06) 0%, transparent 55%),
+    var(--color-bg);
 }
 
 #root {
@@ -49,7 +51,7 @@ a {
 }
 
 a:hover {
-  color: #e4c65a;
+  color: #d2aa3a;
 }
 
 h1,
@@ -88,7 +90,7 @@ textarea {
   border: 1px solid transparent;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn:disabled {
@@ -97,9 +99,9 @@ textarea {
 }
 
 .btn-primary {
-  background: linear-gradient(145deg, #d4b03a, var(--color-accent));
-  color: #0c1218;
-  box-shadow: 0 8px 24px rgba(201, 162, 39, 0.25);
+  background: linear-gradient(145deg, #caa034, var(--color-accent));
+  color: #0b1220;
+  box-shadow: 0 10px 26px rgba(176, 138, 27, 0.22);
 }
 
 .btn-primary:hover:not(:disabled) {
@@ -152,7 +154,7 @@ textarea {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  outline: 2px solid rgba(201, 162, 39, 0.35);
+  outline: 2px solid rgba(176, 138, 27, 0.28);
   border-color: var(--color-accent-dim);
 }
 
@@ -173,17 +175,17 @@ textarea {
 }
 
 .badge-paid {
-  background: rgba(61, 154, 106, 0.2);
+  background: rgba(15, 118, 110, 0.12);
   color: var(--color-success);
 }
 
 .badge-pending {
-  background: rgba(201, 162, 39, 0.15);
+  background: rgba(176, 138, 27, 0.12);
   color: var(--color-accent);
 }
 
 .badge-failed {
-  background: rgba(201, 76, 76, 0.15);
+  background: rgba(180, 35, 24, 0.12);
   color: var(--color-danger);
 }
 
@@ -206,7 +208,7 @@ textarea {
 .page-hero {
   padding: 3rem 0 2rem;
   border-bottom: 1px solid var(--color-border);
-  background: linear-gradient(180deg, rgba(26, 36, 51, 0.5) 0%, transparent 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.04) 0%, transparent 100%);
 }
 
 .page-hero h1 {

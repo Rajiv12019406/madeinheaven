@@ -7,27 +7,28 @@ export function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Strategic legal counsel</p>
-            <h1>Clarity, integrity, and decisive representation.</h1>
+            <p className="eyebrow">Made In Heaven – Family Counselling & Mediation</p>
+            <h1>Where relationships get a second chance.</h1>
             <p className="lede">
-              Made in Heaven pairs seasoned practitioners with modern tools—so you move from uncertainty to a clear
-              plan of action.
+              Made In Heaven is a confidential family counselling and mediation platform that helps couples and families
+              move from conflict to calm conversation. We blend therapy, mediation, and legal awareness to protect
+              relationships before they reach the courtroom.
             </p>
             <div className="hero-actions">
               <Link to="/book" className="btn btn-primary">
-                Book a consultation
+                Book a confidential session
               </Link>
               <Link to="/services" className="btn btn-ghost">
-                Explore services
+                Talk to a counsellor
               </Link>
             </div>
           </div>
           <div className="hero-panel card">
-            <h2>Why clients choose us</h2>
+            <h2>Why families choose us</h2>
             <ul className="hero-list">
-              <li>Confidential intake and structured case review</li>
-              <li>Transparent pricing with secure online payment</li>
-              <li>Role-based access to your consultation history</li>
+              <li>Confidential, judgment‑free conversations</li>
+              <li>Mediation‑first approach before litigation</li>
+              <li>Balanced support for both emotional and practical decisions</li>
             </ul>
           </div>
         </div>
@@ -35,16 +36,16 @@ export function Home() {
       <section className="page-section">
         <div className="container split-3">
           <article className="card feature">
-            <h3>Corporate & contracts</h3>
-            <p>Formation, compliance, and negotiation support for growing teams.</p>
+            <h3>Marriage counselling</h3>
+            <p>For couples facing conflict, distance, or the fear of separation.</p>
           </article>
           <article className="card feature">
-            <h3>Dispute readiness</h3>
-            <p>Early risk mapping and pathways before matters escalate.</p>
+            <h3>Pre‑marital guidance</h3>
+            <p>For engaged and newly married couples building a strong foundation.</p>
           </article>
           <article className="card feature">
-            <h3>Private clients</h3>
-            <p>Estate planning touchpoints with careful documentation.</p>
+            <h3>Mediation & family support</h3>
+            <p>For families navigating legal tension, separation, or in‑law conflict.</p>
           </article>
         </div>
       </section>

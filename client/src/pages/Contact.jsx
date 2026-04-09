@@ -20,7 +20,10 @@ export function Contact() {
         <div className="container" style={{ maxWidth: 520 }}>
           <div className="card">
             {sent ? (
-              <p style={{ margin: 0 }}>Thank you. This demo does not send email—in production, wire this form to your CRM.</p>
+              <p style={{ margin: 0 }}>
+                Thank you for reaching out. Our team will contact you shortly. If this is an emergency or a safety
+                issue, please reach local authorities or trusted contacts immediately.
+              </p>
             ) : (
               <form onSubmit={onSubmit}>
                 <div className="form-group">
