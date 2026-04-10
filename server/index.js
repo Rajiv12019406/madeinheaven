@@ -157,7 +157,7 @@ app.post('/api/auth/forgot-password', async (req, res) => {
         `INSERT INTO password_resets (user_id, token_hash, expires_at, used) VALUES (?, ?, ?, 0)`
       ).run(row.id, tokenHash, expiresAt);
 
-      const resetUrl = `${FRONTEND_PUBLIC_URL}/reset-password?token=${encodeURIComponent(plainToken)}`;
+      const resetUrl = `${FRONTEND_PUBLIC_URL}/#/reset-password?token=${encodeURIComponent(plainToken)}`;
 
       if (process.env.RESET_TOKEN_IN_RESPONSE === 'true') {
         return res.json({
