@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import Razorpay from 'razorpay';
 import db from './db.js';
+import { FRONTEND_PUBLIC_URL, sendPasswordResetEmail } from './mail.js';
 
 const PORT = Number(process.env.PORT) || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-only-change-me';
@@ -46,12 +47,16 @@ app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 app.use(express.json());
 
-function signToken(user) {
+function signToken(user, expiresIn = '7d') {
   return jwt.sign(
     { sub: user.id, email: user.email, role: user.role, name: user.name },
     JWT_SECRET,
-    { expiresIn: '7d' }
+    { expiresIn }
   );
+}
+
+function hashResetToken(token) {
+  return crypto.createHash('sha256').update(String(token), 'utf8').digest('hex');
 }
 
 function authMiddleware(req, res, next) {
@@ -113,7 +118,7 @@ app.post('/api/auth/register', (req, res) => {
 });
 
 app.post('/api/auth/login', (req, res) => {
-  const { email, password } = req.body || {};
+  const { email, password, rememberMe } = req.body || {};
   if (!email || !password) {
     return res.status(400).json({ message: 'Email and password are required' });
   }
@@ -127,7 +132,76 @@ app.post('/api/auth/login', (req, res) => {
     name: row.name,
     role: row.role,
   };
-  res.json({ token: signToken(user), user });
+  const expiresIn = rememberMe === true || rememberMe === 'true' ? '30d' : '7d';
+  res.json({ token: signToken(user, expiresIn), user });
+});
+
+app.post('/api/auth/forgot-password', async (req, res) => {
+  try {
+    const { email } = req.body || {};
+    if (!email) {
+      return res.status(400).json({ message: 'Email is required' });
+    }
+    const row = db.prepare('SELECT id, email FROM users WHERE email = ?').get(String(email).toLowerCase());
+    const generic = {
+      message:
+        'If that email is registered, we sent a password reset link. Check your inbox and spam folder. The link expires in one hour.',
+    };
+
+    if (row) {
+      const plainToken = crypto.randomBytes(32).toString('hex');
+      const tokenHash = hashResetToken(plainToken);
+      const expiresAt = new Date(Date.now() + 60 * 60 * 1000).toISOString();
+      db.prepare('DELETE FROM password_resets WHERE user_id = ?').run(row.id);
+      db.prepare(
+        `INSERT INTO password_resets (user_id, token_hash, expires_at, used) VALUES (?, ?, ?, 0)`
+      ).run(row.id, tokenHash, expiresAt);
+
+      const resetUrl = `${FRONTEND_PUBLIC_URL}/reset-password?token=${encodeURIComponent(plainToken)}`;
+
+      if (process.env.RESET_TOKEN_IN_RESPONSE === 'true') {
+        return res.json({
+          ...generic,
+          resetUrl,
+          resetToken: plainToken,
+          note: 'RESET_TOKEN_IN_RESPONSE is enabled — disable in production.',
+        });
+      }
+
+      try {
+        const { sent } = await sendPasswordResetEmail({ to: row.email, resetUrl });
+        if (!sent) {
+          console.warn('[password-reset] Email not sent; reset URL was logged above for ops.');
+        }
+      } catch (e) {
+        console.error('[password-reset] Email error:', e.message);
+      }
+    }
+
+    return res.json(generic);
+  } catch (e) {
+    console.error('[password-reset]', e);
+    return res.status(500).json({ message: 'Could not process password reset request.' });
+  }
+});
+
+app.post('/api/auth/reset-password', (req, res) => {
+  const { token, password } = req.body || {};
+  if (!token || !password) {
+    return res.status(400).json({ message: 'Token and new password are required' });
+  }
+  if (String(password).length < 8) {
+    return res.status(400).json({ message: 'Password must be at least 8 characters' });
+  }
+  const tokenHash = hashResetToken(token);
+  const row = db.prepare(`SELECT * FROM password_resets WHERE token_hash = ? AND used = 0`).get(tokenHash);
+  if (!row || Number.isNaN(new Date(row.expires_at).getTime()) || new Date(row.expires_at).getTime() < Date.now()) {
+    return res.status(400).json({ message: 'Invalid or expired reset link. Request a new one.' });
+  }
+  const hash = bcrypt.hashSync(String(password), 10);
+  db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(hash, row.user_id);
+  db.prepare('UPDATE password_resets SET used = 1 WHERE id = ?').run(row.id);
+  res.json({ message: 'Password updated. You can sign in now.' });
 });
 
 app.get('/api/auth/me', authMiddleware, (req, res) => {

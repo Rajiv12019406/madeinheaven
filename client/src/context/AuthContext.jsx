@@ -30,11 +30,13 @@ export function AuthProvider({ children }) {
     }
   }, [token]);
 
-  const login = useCallback(async (email, password) => {
+  const login = useCallback(async (email, password, options = {}) => {
     setError(null);
+    const { rememberMe } = options;
     const { data } = await api.post('/api/auth/login', {
       email,
       password,
+      rememberMe: Boolean(rememberMe),
     });
     localStorage.setItem(STORAGE_KEY, data.token);
     setToken(data.token);
