@@ -10,6 +10,32 @@
   align-items: start;
 }
 
+.hero-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-radius: 10px;
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.hero-brand-logo {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  max-height: 140px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -66,12 +92,263 @@
   color: var(--color-muted);
 }
 
+.trust-section {
+  padding-top: 0.25rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  text-align: center;
+}
+
+.stat-value {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  color: var(--color-accent-dim);
+  font-variant-numeric: tabular-nums;
+  min-height: 1.2em;
+}
+
+.stat-label {
+  margin: 0.35rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.section-heading {
+  max-width: 62ch;
+  margin-bottom: 1.25rem;
+}
+
+.section-heading h2 {
+  margin: 0.25rem 0 0.65rem;
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+}
+
+.section-heading p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.journey-step {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(176, 138, 27, 0.12);
+  color: var(--color-accent-dim);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.journey-card h3 {
+  margin: 0 0 0.35rem;
+}
+
+.journey-card p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.wellbeing-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.25rem;
+}
+
+.care-list {
+  margin: 0.8rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--color-muted);
+}
+
+.care-list li {
+  margin-bottom: 0.6rem;
+}
+
+.testimonial-wrap {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.testimonial {
+  margin: 0;
+  border-left: 3px solid rgba(176, 138, 27, 0.45);
+  padding-left: 0.8rem;
+}
+
+.testimonial p {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.testimonial cite {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--color-muted);
+  font-style: normal;
+  font-size: 0.9rem;
+}
+
+.home-loa-section {
+  padding-top: 0.25rem;
+}
+
+.home-loa {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 1.5rem;
+  align-items: center;
+  margin: 0;
+}
+
+.home-loa-text h2 {
+  margin: 0.25rem 0 0.65rem;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+}
+
+.home-loa-text p:not(.eyebrow) {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.home-loa-visual {
+  margin: 0;
+}
+
+.home-loa-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-muted, #1a1a1c);
+}
+
+.home-loa-caption {
+  margin: 0.6rem 0 0;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  line-height: 1.35;
+}
+
+.final-cta {
+  padding-top: 0.5rem;
+}
+
+.cta-card {
+  text-align: center;
+}
+
+.cta-card h2 {
+  margin: 0.2rem 0 0.6rem;
+}
+
+.cta-card p {
+  margin-inline: auto;
+  max-width: 62ch;
+}
+
+.cta-card .hero-actions {
+  justify-content: center;
+  margin-top: 1.1rem;
+}
+
+.founder-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.25rem;
+}
+
+.founder-message h2 {
+  margin: 0.25rem 0 0.75rem;
+  font-size: clamp(1.6rem, 2.8vw, 2.15rem);
+}
+
+.founder-message p {
+  color: var(--color-muted);
+}
+
+.founder-list {
+  margin: 0.8rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--color-muted);
+}
+
+.founder-list li {
+  margin-bottom: 0.55rem;
+}
+
+.founder-signoff {
+  margin: 0.85rem 0 0;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.mission-goal-card h3 {
+  margin: 0.55rem 0 0.2rem;
+}
+
+.compact-list {
+  margin-top: 0.35rem;
+}
+
+.partnership-card h2 {
+  margin: 0.25rem 0 0.65rem;
+}
+
+.partnership-card > p {
+  margin: 0 0 0.8rem;
+  color: var(--color-muted);
+  max-width: 70ch;
+}
+
+.partnership-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.partnership-layout h3 {
+  margin: 0;
+}
+
+.partnership-card .hero-actions {
+  margin-top: 1rem;
+}
+
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
   }
 
   .split-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid,
+  .journey-grid,
+  .wellbeing-grid,
+  .founder-grid,
+  .partnership-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .home-loa {
     grid-template-columns: 1fr;
   }
 }

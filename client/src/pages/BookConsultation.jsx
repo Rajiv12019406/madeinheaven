@@ -110,6 +110,7 @@ export function BookConsultation() {
           contact: phone,
         },
         theme: { color: '#c9a227' },
+       
       });
 
       rzp.on('payment.failed', (fail) => {

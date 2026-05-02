@@ -61,7 +61,7 @@ export function ResetPassword() {
               <form onSubmit={onSubmit}>
                 {error && <p className="form-error" style={{ marginTop: 0 }}>{error}</p>}
                 <div className="form-group">
-                  <label htmlFor="rp-token">Reset token</label>
+                  {/* <label htmlFor="rp-token">Reset token</label>
                   <input
                     id="rp-token"
                     type="text"
@@ -71,7 +71,7 @@ export function ResetPassword() {
                     autoComplete="off"
                     placeholder="Paste token from your email"
                     disabled={submitting}
-                  />
+                  /> */}
                 </div>
                 <div className="form-group">
                   <label htmlFor="rp-pass">New password</label>

@@ -1,0 +1,87 @@
+.about-hero {
+  padding: 3.25rem 0 2.5rem;
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.about-hero h1 {
+  margin: 0 0 0.8rem;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+}
+
+.about-hero p {
+  margin: 0;
+  color: var(--color-muted);
+  max-width: 64ch;
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.about-hero-panel h3 {
+  margin: 0 0 0.6rem;
+}
+
+.about-hero-panel ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--color-muted);
+}
+
+.about-hero-panel li {
+  margin-bottom: 0.6rem;
+}
+
+.about-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.about-card h2 {
+  margin: 0.25rem 0 0.6rem;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+}
+
+.about-card p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.about-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--color-muted);
+}
+
+.about-list li {
+  margin-bottom: 0.55rem;
+}
+
+.about-list-tight {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.25rem 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .about-hero-grid,
+  .about-grid,
+  .about-list-tight {
+    grid-template-columns: 1fr;
+  }
+}
